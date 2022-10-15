@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>Task</header>
+      <div class="todo">
+        <div class="todolist">
+          <div class="card">
+            <p class="title">Title</p>
+            <div class="content">
+                <div class="content-desc">
+                    <p class="description">
+                        this is description
+                    </p>
+                    <p class="date">
+                        7/7/7
+                    </p>
+                </div>
+                <img class="img-icon" src="./images/delete.svg" alt="delete">
+            </div>
+          </div>
+        </div>
+        <div class="todoadd">
+          <form>
+            <label for="tTitle">Task Title:</label>
+            <input
+              type="text"
+              id="tTitle"
+              name="Title"
+              placeholder="Enter task title"
+            />
+            <label for="tDescription">Task Decription:</label>
+            <input
+              type="text"
+              id="tDescription"
+              name="tDescription"
+              placeholder="Enter task Description"
+            />
+            <label for="tDueDate">Task Due Date:</label>
+            <input type="date" id="tDueDate" name="Date" />
+            
+            <input type="submit" value="Submit">
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+        &nbsp; Task List 2022
+    </footer>
+  </body>
+  <script src="./js/script.js"></script>
+</html>
