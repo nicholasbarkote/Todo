@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+:root{
+    --primary:rgb(140, 118, 236);
+    --secondary:rgb(45, 19, 160);
+    --tertiary:rgb(4, 2, 15);
+    
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    background-color: var(--primary);
+
+}
