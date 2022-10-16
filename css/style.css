@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 :root {
-  --primary: rgb(140, 118, 236);
-  --secondary: rgb(45, 19, 160);
+  --primary: rgb(81, 51, 214);
+  --secondary: #2d13a0;
   --tertiary: rgb(4, 2, 15);
 }
 * {
@@ -16,36 +16,49 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+/* Header */
 header {
   display: flex;
   justify-content: center;
-  padding: 40px;
+  font-size: xx-large;
+  padding: 20px;
+  color: white;
   background-color: var(--primary);
 }
 
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: auto;
+  height: 25px;
+  font-size: small;
+  background-color: var(--primary);
+  color: white;
+}
+
+
+
+/* Todo list */
 .todo {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  gap: 20px;
   align-items: center;
   padding: 30px;
 }
 
-.todoadd {
-  width: 400px;
-}
-.todolist {
+.todoadd , .todolist {
   width: 400px;
 }
 
+/* Form list */
 form {
   padding: 12px 12px 12px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
 input[type="text"] {
   width: 100%;
   padding: 12px;
@@ -78,15 +91,16 @@ input[type="submit"]:hover {
 
 /* Task List */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
+  box-shadow: 0 4px 8px 0 var(--tertiary);
+  transition: 0.9s;
   display: flex;
   flex-direction: column;
+  width: 300px; 
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-.card .content {
+.card > .content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -103,28 +117,27 @@ input[type="submit"]:hover {
   text-decoration: underline;
 }
 
-footer {
-  text-align: center;
-  margin-top: auto;
-  height: 40px;
-  background-color: var(--primary);
-}
-
-.titlemsg,.imgtitle,.titledesc,.imgdesc,.titledate,.imgdate{
+.titlemsg,
+.imgtitle,
+.titledesc,
+.imgdesc,
+.titledate,
+.imgdate {
   display: none;
 }
 
-.titlemsg.visible{
+.titlemsg.visible {
   display: block;
 }
 
-
-.row{
+.row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-#imgtitle,#imgdesc,#imgdate{
+#imgtitle,
+#imgdesc,
+#imgdate {
   width: 15px;
   height: 15px;
 }

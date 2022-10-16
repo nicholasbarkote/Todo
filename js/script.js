@@ -107,13 +107,14 @@ function readFromArray() {
         div.innerHTML =
             `
             <p class="title">${task.title}</p>
+        
             <div class="content">
               <div class="content-desc">
-                <p class="description">${task.description}</p>
-                <p class="date">${task.date}</p>
+                <p class="description">Desc: ${task.description}</p>
+                <p class="date">Date : ${task.date}</p>
               </div>
-              <img class="img-icon" src="./images/delete.svg" alt="delete" />
-               `;
+            <img class="img-icon" src="./images/delete.svg" alt="delete" />
+            `;
 
         todolist.appendChild(div);
     });
