@@ -8,6 +8,7 @@ const discImg = document.getElementById("imgdesc");
 const dateDesc = document.getElementById("titledate");
 const dateImg = document.getElementById("imgdate");
 const form = document.getElementById('form');
+const todolist = document.getElementById('todolist');
 const submit = document.getElementById('submit');
 
 var tasklist = [];
@@ -19,12 +20,18 @@ form.addEventListener('submit', (e) => {
     let Descvalid = false;
     let Datevalid = false;
 
+    var titleMsg;
+    var descMsg;
+    var dateMsg;
+
     if (title.value === '' || title.value == null) {
         titleErr.style.display = 'block';
         titleErr.innerHTML = "Must have a title";
         imgtitleErr.src = '../images/cancel.svg';
         Titilevalid = false;
-    }else{
+    } else {
+        Titilevalid = true;
+        titleMsg = title.value;
         imgtitleErr.src = '../images/tick.svg';
     }
     if (desc.value === '' || desc.value == null) {
@@ -32,11 +39,14 @@ form.addEventListener('submit', (e) => {
         discMsg.innerHTML = "Must have a description";
         discImg.src = '../images/cancel.svg';
         Descvalid = false;
-    }else{
+    } else {
+        Descvalid = true;
+        descMsg = desc.value;
         discImg.src = '../images/tick.svg';
     }
 
     if (date.value) {
+        dateMsg = date.value;
         Datevalid = true;
         dateImg.src = '../images/tick.svg';
     } else {
@@ -49,20 +59,62 @@ form.addEventListener('submit', (e) => {
     }
 
     if (Titilevalid && Descvalid && Datevalid) {
-
-        addToTask(title.value,desc.value,date.value);
-      
+        console.log("Added to list")
+        title.value = '';
+        date.value = '';
+        desc.value = '';
+        titleErr.style.display = 'none';
+        discMsg.style.display = 'none';
+        dateDesc.style.display = 'none';
+        Titilevalid = false;
+        Descvalid = false;
+        Datevalid = false;
+        addToTask(titleMsg, descMsg, dateMsg);
+        readFromArray();
     } else {
-
+        return;
     }
 });
 
 
-function addToTask(title , desc, date){
-    const task ={
-        title:title,
-        description:desc,
-        date:date
+function addToTask(title, desc, date) {
+    console.log("Add to task")
+    var task ={
+        title: title,
+        description: desc,
+        date: date
     };
+
+
+    console.log("Task " + task.title)
     tasklist.push(task);
+
+    task = null;
+    
+    tasklist.forEach(element => {
+        console.log(element);
+    });
+    
+}
+
+function readFromArray() {
+
+    todolist.replaceChildren()
+
+    tasklist.map(task => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML =
+            `
+            <p class="title">${task.title}</p>
+            <div class="content">
+              <div class="content-desc">
+                <p class="description">${task.description}</p>
+                <p class="date">${task.date}</p>
+              </div>
+              <img class="img-icon" src="./images/delete.svg" alt="delete" />
+               `;
+
+        todolist.appendChild(div);
+    });
 }
