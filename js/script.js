@@ -10,6 +10,7 @@ const dateImg = document.getElementById("imgdate");
 const form = document.getElementById('form');
 const submit = document.getElementById('submit');
 
+var tasklist = [];
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -49,12 +50,19 @@ form.addEventListener('submit', (e) => {
 
     if (Titilevalid && Descvalid && Datevalid) {
 
-        imgtitleErr.src = '../images/tick.svg';
-        discImg.src = '../images/tick.svg';
-        dateImg.src = '../images/tick.svg';
-
+        addToTask(title.value,desc.value,date.value);
+      
     } else {
 
     }
 });
 
+
+function addToTask(title , desc, date){
+    const task ={
+        title:title,
+        description:desc,
+        date:date
+    };
+    tasklist.push(task);
+}
