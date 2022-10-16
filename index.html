@@ -11,24 +11,11 @@
     <div class="container">
       <header>Task</header>
       <div class="todo">
-        <div class="todolist">
-          <div class="card">
-            <p class="title">Title</p>
-            <div class="content">
-                <div class="content-desc">
-                    <p class="description">
-                        this is description
-                    </p>
-                    <p class="date">
-                        7/7/7
-                    </p>
-                </div>
-                <img class="img-icon" src="./images/delete.svg" alt="delete">
-            </div>
-          </div>
+        <div id="todolist">
+      
         </div>
         <div class="todoadd">
-          <form>
+          <form id="form">
             <label for="tTitle">Task Title:</label>
             <input
               type="text"
@@ -36,6 +23,10 @@
               name="Title"
               placeholder="Enter task title"
             />
+            <div class="row">
+              <p id="titlemsg"></p>
+              <img id="imgtitle" src="" />
+            </div>
             <label for="tDescription">Task Decription:</label>
             <input
               type="text"
@@ -43,19 +34,23 @@
               name="tDescription"
               placeholder="Enter task Description"
             />
+            <div class="row">
+              <p id="titledesc"></p>
+              <img id="imgdesc" src="" />
+            </div>
             <label for="tDueDate">Task Due Date:</label>
             <input type="date" id="tDueDate" name="Date" />
-            
-            <input type="submit" value="Submit">
-
+            <div class="row">
+              <p id="titledate"></p>
+              <img id="imgdate" src="" />
+            </div>
+            <input type="submit" id="submit" value="Submit" />
           </form>
         </div>
       </div>
     </div>
 
-    <footer>
-        &nbsp; Task List 2022
-    </footer>
+    <footer>&nbsp; Task List 2022</footer>
   </body>
-  <script src="./js/script.js"></script>
+  <script src="./js/script.js" defer></script>
 </html>

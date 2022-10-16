@@ -109,3 +109,22 @@ footer {
   height: 40px;
   background-color: var(--primary);
 }
+
+.titlemsg,.imgtitle,.titledesc,.imgdesc,.titledate,.imgdate{
+  display: none;
+}
+
+.titlemsg.visible{
+  display: block;
+}
+
+
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#imgtitle,#imgdesc,#imgdate{
+  width: 15px;
+  height: 15px;
+}
