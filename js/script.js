@@ -9,9 +9,24 @@ const dateDesc = document.getElementById("titledate");
 const dateImg = document.getElementById("imgdate");
 const form = document.getElementById('form');
 const todolist = document.getElementById('todolist');
+const todocompleted = document.getElementById('completed');
+const todoincomplete = document.getElementById('incomplete');
+const allitems = document.getElementById('all');
 const submit = document.getElementById('submit');
+const tabs = document.querySelectorAll('[data-tab-target]');
+const tabsContents = document.querySelectorAll('[data-tab-content]');
 
 var tasklist = [];
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const target = document.querySelector(tab.dataset.tabTarget)
+        tabsContents.forEach(tabContent => {
+            tabContent.classList.remove('active');
+        });
+        target.classList.add('active');
+    });
+});
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -79,49 +94,89 @@ form.addEventListener('submit', (e) => {
 
 function addToTask(title, desc, date) {
     console.log("Add to task")
-    var task ={
+    var task = {
         title: title,
         description: desc,
-        date: date
+        date: date,
+        completed: false
     };
 
-
-    console.log("Task " + task.title)
     tasklist.push(task);
 
-    task = null;
-    
+
     tasklist.forEach(element => {
         console.log(element);
     });
-    
+
 }
 
 function readFromArray() {
 
-    todolist.replaceChildren()
+    todocompleted.replaceChildren()
+    allitems.replaceChildren()
+    todoincomplete.replaceChildren()
 
-    tasklist.map((task,i) => {
+    tasklist.map((task, i) => {
+
         const div = document.createElement('div');
         div.className = 'card';
         div.innerHTML =
             `
             <p class="title">${task.title}</p>
-        
-            <div class="content">
-              <div class="content-desc">
-                <p class="description">Desc: ${task.description}</p>
-                <p class="date">Date : ${task.date}</p>
-              </div>
+            <p class="description">Desc: ${task.description}</p>
+            <p class="date">Due Date:${task.date} </p>
+            <div>
+                <label>Completed</label><input value='submit' type='checkbox' ` + task.completed + ` onclick='handleClick(${i});'/>
+            </div>
             <img class="img-icon" src="./images/delete.svg" alt="delete" onclick="removeFromTask(${i})"/>
             `;
 
-        todolist.appendChild(div);
+
+        allitems.appendChild(div)
+
+        if (task.completed) {
+            const div = document.createElement('div');
+            div.className = 'card';
+            div.innerHTML =
+                `
+                <p class="title">${task.title}</p>
+                <p class="description">Desc: ${task.description}</p>
+                <p class="date">Due Date:${task.date} </p>
+                <div>
+                    <label>Completed</label><input value='submit' type='checkbox' ` + task.completed + ` onclick='handleClick(${i});'/>
+                </div>
+                <img class="img-icon" src="./images/delete.svg" alt="delete" onclick="removeFromTask(${i})"/>
+                `;
+
+            todocompleted.appendChild(div);
+        } else {
+            const div = document.createElement('div');
+            div.className = 'card';
+            div.innerHTML =
+                `
+                <p>Task Title: ${task.title}</p>
+                <p class="description">Desc: ${task.description}</p>
+                <p class="date">Due Date ${task.date} </p>
+                <div>
+                    <label>Completed</label><input value='submit' type='checkbox' ` + task.completed + ` onclick='handleClick(${i});'/>
+                </div>
+                <img class="img-icon" src="./images/delete.svg" alt="delete" onclick="removeFromTask(${i})"/>
+                `;
+
+            todoincomplete.appendChild(div);
+        }
+
     });
 }
 
 
-function removeFromTask(index){
-    tasklist.splice(index,1);
-    readFromArray()
+function removeFromTask(index) {
+    tasklist.splice(index, 1);
+    readFromArray();
+}
+
+function handleClick(index) {
+
+    tasklist[index].completed = !tasklist[index].completed
+    readFromArray();
 }
