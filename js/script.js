@@ -101,7 +101,7 @@ function readFromArray() {
 
     todolist.replaceChildren()
 
-    tasklist.map(task => {
+    tasklist.map((task,i) => {
         const div = document.createElement('div');
         div.className = 'card';
         div.innerHTML =
@@ -113,9 +113,15 @@ function readFromArray() {
                 <p class="description">Desc: ${task.description}</p>
                 <p class="date">Date : ${task.date}</p>
               </div>
-            <img class="img-icon" src="./images/delete.svg" alt="delete" />
+            <img class="img-icon" src="./images/delete.svg" alt="delete" onclick="removeFromTask(${i})"/>
             `;
 
         todolist.appendChild(div);
     });
+}
+
+
+function removeFromTask(index){
+    tasklist.splice(index,1);
+    readFromArray()
 }
