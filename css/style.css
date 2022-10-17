@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 :root {
-  --primary: rgb(140, 118, 236);
-  --secondary: rgb(45, 19, 160);
-  --tertiary: rgb(4, 2, 15);
+  --primary: #47b5ff;
+  --secondary: #256d85;
+  --tertiary: #06283d;
+  --textcolor: #dff6ff;
 }
 * {
   margin: 0;
@@ -11,41 +12,65 @@
 }
 
 body {
-  min-height: 100vh;
   font-family: "Roboto Mono", monospace;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
-
+/* Header */
 header {
   display: flex;
   justify-content: center;
-  padding: 40px;
+  font-size: xx-large;
+  padding: 15px;
+  color: var(--textcolor);
   background-color: var(--primary);
 }
 
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: auto;
+  height: 25px;
+  font-size: small;
+  background-color: var(--primary);
+  color: var(--textcolor);
+}
+
+/* Todo list */
 .todo {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-evenly;
   padding: 30px;
 }
 
-.todoadd {
-  width: 400px;
+[data-tab-content] {
+  display: none;
 }
-.todolist {
-  width: 400px;
+.active[data-tab-content] {
+  display: block;
 }
 
+#todolisttabs {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.todoadd,
+#todolist {
+  width: 450px;
+}
+
+/* Form list */
 form {
   padding: 12px 12px 12px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
 input[type="text"] {
   width: 100%;
   padding: 12px;
@@ -63,7 +88,7 @@ input[type="date"] {
 input[type="submit"] {
   width: 25%;
   background-color: var(--tertiary);
-  color: white;
+  color: var(--textcolor);
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
@@ -78,53 +103,144 @@ input[type="submit"]:hover {
 
 /* Task List */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  display: flex;
-  flex-direction: column;
-}
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-.card .content {
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 350px;
+  color: var(--textcolor);
+  background-color: var(--tertiary);
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid white;
+  margin: 20px;
+}
+.card:hover {
+  box-shadow: 0 4px 8px 0 var(--tertiary);
+}
+
+.card > .content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.cardcontent > .description , .date{
+  font-weight: lighter;
+}
+#carddelete {
+  align-self: center;
+}
+#carddelete {
+  align-self: flex-end;
 }
 .img-icon {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  align-self: center;
+  align-self: flex-end;
 }
 
-.card > p {
+/* .card > p {
   text-align: center;
   text-decoration: underline;
-}
+} */
 
-footer {
-  text-align: center;
-  margin-top: auto;
-  height: 40px;
-  background-color: var(--primary);
-}
-
-.titlemsg,.imgtitle,.titledesc,.imgdesc,.titledate,.imgdate{
+.titlemsg,
+.imgtitle,
+.titledesc,
+.imgdesc,
+.titledate,
+.imgdate {
   display: none;
 }
 
-.titlemsg.visible{
+.titlemsg.visible {
   display: block;
 }
 
-
-.row{
+.row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-#imgtitle,#imgdesc,#imgdate{
+#imgtitle,
+#imgdesc,
+#imgdate {
   width: 15px;
   height: 15px;
+}
+#Eimgtitle,
+#Eimgdesc,
+#eimgdate {
+  width: 15px;
+  height: 15px;
+}
+#first,
+#second {
+  height: 40vh;
+}
+
+#cardcontent .title {
+  font-weight: bolder;
+  font-size: x-large;
+
+}
+
+hr.solid{
+  border: 1px solid var(--textcolor);
+}
+
+/* Media queries */
+
+@media (max-width: 480px) {
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .todo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+  }
+}
+/* Html edit css */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: var(--primary); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
