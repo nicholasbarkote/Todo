@@ -55,11 +55,56 @@
               <p id="titledate"></p>
               <img id="imgdate" src="" />
             </div>
-            <input type="submit" id="submit" value="Submit" />
+            <input type="submit" id="submit" value="Submit" onclick="submit()" />
           </form>
         </div>
       </div>
     </div>
+    <!-- Edit -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="todoEdit">
+      <form id="Editform">
+        <p id="EditIndex"></p>
+        <label for="ETitle">Task Title:</label>
+        <input
+          type="text"
+          id="ETitle"
+          name="Title"
+          placeholder="Enter task title"
+        />
+        <div class="row">
+          <p id="Etitlemsg"></p>
+          <img id="Eimgtitle" src="" />
+        </div>
+        <label for="EDescription">Task Decription:</label>
+        <input
+          type="text"
+          id="EDescription"
+          name="tDescription"
+          placeholder="Enter task Description"
+        />
+        <div class="row">
+          <p id="Etitledesc"></p>
+          <img id="Eimgdesc" src="" />
+        </div>
+        <label for="EDueDate">Task Due Date:</label>
+        <input type="date" id="EDueDate" name="Date" />
+        <div class="row">
+          <p id="etitledate"></p>
+          <img id="eimgdate" src="" />
+        </div>
+        <label for="eCheckComplete">Is complete:</label>
+        <input type="checkbox" id="eCheckComplete"  />
+        
+        <input type="submit" id="EditTask" value="Edit"  />
+      </form>
+    </div>
+  </div>
+
+</div>
     <footer>&copy; Task List 2022</footer>
   </body>
   <script src="./js/script.js" ></script>
