@@ -283,7 +283,7 @@ function handleClick(index) {
         var diffInDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
         var dateMessage = ""
 
-        if (diffInDays > 0) {
+        if (diffInDays >= 0) {
             dateMessage = "Completed " + diffInDays + " day Before due date";
         } else if (diffInDays < 0) {
             dateMessage = "Late by " + -1 * diffInDays + " days";
