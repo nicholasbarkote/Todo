@@ -122,10 +122,16 @@ function readFromArray() {
         div.className = 'card';
         div.innerHTML =
             `
-            <p class="title">${task.title}</p>
-            <p class="description">Desc: ${task.description}</p>
-            <p class="date">Due Date:${task.date} </p>
-            <img class="img-icon" src="./images/delete.svg" alt="delete" onclick="removeFromTask(${i})"/>
+            <div id="cardcontent">
+                <p class="title underline">Title :${task.title}</p>
+                <p class="description underline">Desc: ${task.description}</p>
+                <p class="date underline">Due Date:${task.date} </p>
+                <p class="date underline">Completed :${task.completed} </p>
+            </div>
+            <div id="carddelete">
+                <img class="img-icon" src="./images/delete.svg" alt="delete" onclick="removeFromTask(${i})"/>
+                <img class="img-icon" src="./images/edit.svg" alt="delete" onclick="editTask(${i})"/>
+            </div>
             `;
 
 
@@ -136,11 +142,17 @@ function readFromArray() {
             div.className = 'card';
             div.innerHTML =
                 `
+            <div id="cardcontent">
                 <p class="title">${task.title}</p>
                 <p class="description">Desc: ${task.description}</p>
                 <p class="date">Due Date:${task.date} </p>
                 <p>${task.DueMessage}</p>
+            </div>
+            <div id="carddelete">
                 <img class="img-icon" src="./images/delete.svg" alt="delete" onclick="removeFromTask(${i})"/>
+                <img class="img-icon" src="./images/edit.svg" alt="delete" onclick="editTask(${i})"/>
+            </div>
+               
                 `;
 
             todocompleted.appendChild(div);
@@ -149,13 +161,18 @@ function readFromArray() {
             div.className = 'card';
             div.innerHTML =
                 `
+            <div id="cardcontent">
                 <p>Task Title: ${task.title}</p>
                 <p class="description">Desc: ${task.description}</p>
                 <p class="date">Due Date ${task.date} </p>
                 <div>
                     <label>Completed</label><input value='submit' type='checkbox' ` + task.completed + ` onclick='handleClick(${i});'/>
                 </div>
+            </div>
+            <div id="carddelete">
                 <img class="img-icon" src="./images/delete.svg" alt="delete" onclick="removeFromTask(${i})"/>
+                <img class="img-icon" src="./images/edit.svg" alt="delete" onclick="editTask(${i})"/>
+            </div>
                 `;
 
             todoincomplete.appendChild(div);
@@ -191,4 +208,8 @@ function handleClick(index) {
 
     }
     readFromArray();
+}
+
+function editTask(index){
+
 }
