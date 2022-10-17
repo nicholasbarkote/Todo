@@ -125,9 +125,6 @@ function readFromArray() {
             <p class="title">${task.title}</p>
             <p class="description">Desc: ${task.description}</p>
             <p class="date">Due Date:${task.date} </p>
-            <div>
-                <label>Completed</label><input value='submit' type='checkbox' ` + task.completed + ` onclick='handleClick(${i});'/>
-            </div>
             <img class="img-icon" src="./images/delete.svg" alt="delete" onclick="removeFromTask(${i})"/>
             `;
 
@@ -142,9 +139,7 @@ function readFromArray() {
                 <p class="title">${task.title}</p>
                 <p class="description">Desc: ${task.description}</p>
                 <p class="date">Due Date:${task.date} </p>
-                <div>
-                    <label>Completed</label><input value='submit' type='checkbox' ` + task.completed + ` onclick='handleClick(${i});'/>
-                </div>
+                <p>${task.DueMessage}</p>
                 <img class="img-icon" src="./images/delete.svg" alt="delete" onclick="removeFromTask(${i})"/>
                 `;
 
@@ -177,6 +172,23 @@ function removeFromTask(index) {
 
 function handleClick(index) {
 
-    tasklist[index].completed = !tasklist[index].completed
+    if (!tasklist[index].completed) {
+
+        const dueDate = new Date(tasklist[index].date);
+        let today = new Date();
+        let diff = dueDate.getTime() - today.getTime();
+        var diffInDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
+        var dateMessage = ""
+
+        if (diffInDays > 0) {
+            dateMessage = "Completed " + diffInDays + " day Before due date";
+        } else if (diffInDays < 0) {
+            dateMessage = "Late by " + -1 * diffInDays + " days";
+        } 
+        tasklist[index].completed = true;
+        tasklist[index].DueMessage = dateMessage;
+        
+
+    }
     readFromArray();
 }

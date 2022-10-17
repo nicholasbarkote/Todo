@@ -115,6 +115,7 @@ input[type="submit"]:hover {
   padding: 5px;
   border-radius: 5px;
   border: 2px solid white;
+  margin: 20px;
 }
 .card:hover {
   box-shadow: 0 4px 8px 0 var(--tertiary);
