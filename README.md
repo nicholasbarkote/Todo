@@ -18,7 +18,7 @@
 
 ## Links
 
-- solution url [ Click me ](https://nicholasbarkote.github.io/Qr-code/)
+- solution url [ Click me ](https://nicholasbarkote.github.io/Todo/)
 
 # Built With
 
