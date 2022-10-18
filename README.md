@@ -28,7 +28,7 @@
 
 ## what i learned 
 
-- In this project i learned about array methods 
+- In this project i learned about array methods .   
 
 ## Author
 
